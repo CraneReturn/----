@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/control.css">
+</head>
+
+<body>
+    <!-- 修改食物的盒子 -->
+    <div class="foodBoxShadow" id="foodBoxShadow" style="display: none;">
+        <div class="findfoodHidden" id=""style="display: none;">
+            <p style="font-size:18px;">修改食物信息</p></br>
+            <span class="spaName">名称</span>
+            <input type="text" placeholder="请输入食物名称" id="lookOrderID" autocomplete="off">
+            <span  class="spaName">金额</span>
+            <input type="number" placeholder="请输入食物金额" id="searchOrdermoney" autocomplete="off">
+            <span  class="spaName">描述</span>
+            <input type="text" placeholder="请输入食物描述" id="searchOrderphone" autocomplete="off">
+            <span  class="spaName">种类</span>
+            <input type="text" placeholder="请输入食物种类" id="searchOrdernowtime" autocomplete="off">
+            <div class="addfoodaginbox">
+                <button id="changefoodagin">确认修改</button>
+                <button id="rightchangefoodagin">取消修改</button>
+            </div>
+
+        </div>
+    </div>
+    <!-- 添加订单的盒子 -->
+    <div class="orderBoxShadow" id="orderBoxShadow" style="display: none
+    ;">
+        <div class="findfoodOrderHidden" style="display: none
+        ;">
+            <p style="font-size:18px;">添加订单信息</p></br>
+            <input type="text" placeholder="请输入订单名称" id="lookOrderID" autocomplete="off">
+            <input type="number" placeholder="请输入订单金额" id="searchOrdermoney" autocomplete="off">
+            <input type="text" placeholder="请输入订单电话" id="searchOrderphone" autocomplete="off">
+            <input type="text" placeholder="请输入订单状态" id="searchOrdernowtime" autocomplete="off">
+            <div class="addfoodOrderaginbox">
+                <button id="addfoodOrderagin">确认添加</button>
+                <button id="rightaddfoodOrderagin">取消添加</button>
+            </div>
+
+        </div>
+    </div>
+    <!-- 添加用户信息的盒子 -->
+      <div class="userBoxShadow" id="userBoxShadow" style="display: none;">
+        <div class="userOrderHidden" id="userOrderHidden" style="display: none;">
+            <p id="addUsermessage"style="font-size:18px;">添加用户信息</p></br>
+            <input type="text" placeholder="请输入用户名称" id="addUserID" autocomplete="off">
+            <input type="number" placeholder="请输入年纪" id="addYears" autocomplete="off">
+            <input type="text" placeholder="请输入性别" id="addGender" autocomplete="off">
+            <input type="text" placeholder="请输入积分" id="addIntegral" autocomplete="off">
+            <div class="addfoodOrderaginbox">
+                <button id="adduserOrderagin">确认添加</button>
+                <button id="rightadduserOrderagin">取消添加</button>
+            </div>
+
+        </div>
+    </div>
+    <!-- 修改数据订单 -->
+    <div class="changeorderBoxShadow" id="changeorderBoxShadow" style="display: none
+    ;">
+        <div class="changefoodOrderHidden" id="changefoodOrderHidden" style="display: none
+        ;">
+            <p style="font-size:18px;">修改订单信息</p></br>
+            <input type="text" placeholder="请输入订单名称" id="changeOrderID" autocomplete="off">
+            <input type="number" placeholder="请输入订单金额" id="changeOrdermoney" autocomplete="off">
+            <input type="text" placeholder="请输入订单电话" id="changeOrderphone" autocomplete="off">
+            <input type="text" placeholder="请输入订单状态" id="changeOrdernowtime" autocomplete="off">
+            <div class="foodOrderaginbox">
+                <button id="changefoodOrderagin">确认修改</button>
+                <button id="rightchangefoodOrderagin">取消修改</button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- 左侧导航栏 -->
+    <div class="nail">
+        <!-- 食物有关的 -->
+        <div class="Foodnail">
+            <ul>
+                <p style="font-size: 20px;">食物</p>
+            </ul>
+        </div>
+        <!-- 订单有关的 -->
+        <div class="ordernail">
+            <ul>
+                <p style="font-size: 20px;">订单</p>
+            </ul>
+        </div>
+        <!-- 用户有关的 -->
+        <div class="usernail">
+            <ul>
+                <p style="font-size: 20px;">用户</p>
+            </ul>
+        </div>
+    </div>
+    <div class="userOwnnail">
+        <div id="foodAddUser" style="display:none">
+            <input type="text" placeholder="请输入菜品名称" id="inputfoodName" class="food-user" autocomplete="off">
+            <input type="text" placeholder="请输入菜品价格" id="inputfoodPrice" class="food-user" autocomplete="off">
+            <input type="text" placeholder="请输入菜品描述" id="inputfoodDes" class="food-user" autocomplete="off">
+            <input type="text" placeholder="请输入菜品类型" id="inputfoodType" class="food-user" autocomplete="off">
+            <button id="food-user-finding">添加</button>
+
+
+        </div>
+        <div class="userPhotos">
+            <img id="headPhoto" src="../img/userPhoto.jpg" />
+        </div>
+        <div>
+            <ul id="userShow">
+                <li id="userOrder">主菜单</li>
+                <li id="userMessage">用户信息</li>
+                <li id="returnBack">退出登录</li>
+            </ul>
+        </div>
+        <div class="info">
+            <!-- 食物部分的样式表 -->
+            <div class="AllFood">
+                <ul id="foodHead">
+                    <li>菜品名称</li>
+                    <li>价格</li>
+                    <li>描述</li>
+                    <li>类型</li>
+                </ul>
+            </div>
+            <div class="">
+                <table class="foodBox" border="0">
+                    <thead id="foodTable">
+                        <tr>
+                            <th>菜品名称</th>
+                            <th>价格</th>
+                            <th>描述</th>
+                            <th>类型</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody id="foodTable"></tbody>
+                </table>
+            </div>
+            <div class="foodChangebtn">
+                <button id="foodChangebtnUp">上一页</button>
+                <span>
+                    页数
+                    <span id="foodPageNum">1</span>
+                </span>
+                <button id="foodChangebtnDown">下一页</button>
+                <a id="addFood">添加</a>
+                <div id="findFood">
+                    <input type="search" name="search" placeholder="请输入关键字" id="search">
+                    <a id="lookFood">搜索</a>
+                    <a id="reNewFood">重置</a>
+                    
+                    <!-- <form>
+                    搜索:<input type="text" value="请输入你想搜索的菜名" />
+                </form> -->
+                </div>
+            </div>
+        </div>
+        <!-- 账单部分 -->
+        <!-- 账单部分外面最大的盒子 -->
+        <div class="info" style="display: none" id="orderbigBox">
+            <!-- 放账单表格的盒子 -->
+            <div class="findingorderupbox">
+                <span>用户名</span>
+                <input type="text" placeholder="请输入订单名" id="findingOrderID">
+                <button id="findfoodOrder">确认搜索</button>
+                <button id="delectfindfoodOrder">取消搜索</button>
+                <button id="renewfoodOrder">重置</button>
+                <button id="addfoodOrder">添加</button>
+
+            </div>
+
+            <div class="billTable">
+                <ul id="billAll">
+                    <li>用户名</li>
+                    <li>订单金额</li>
+                    <li>客户手机号</li>
+                    <li>支付状态</li>
+                    <li>操作</li>
+                </ul>
+                <div id="orderHead">
+                    <ul class="orderTable">
+                        <li class="orderconten"></li>
+                        <li class="orderconten"></li>
+                        <li class="orderconten"></li>
+                        <li class="orderconten"></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- 放操作按钮的 -->
+            <div class="orderChangebtnAll">
+                <div class="orderChangebtn">
+                    <button id="orderChangebtnUp">上一页</button>
+                    <span>
+                        页数
+                        <span id="orderPageNum">1</span>
+                    </span>
+                    <button id="orderChangebtnDown">下一页</button>
+                    <div class="orderButtonall">
+                        <!-- 放添加搜索删除 -->
+
+                        <!-- 隐藏添加的盒子 -->
+                        <div class="findfoodOrderHidden" style="display: none;">
+                            <p style="font-size:18px;">添加订单信息</p></br>
+                            <input type="text" placeholder="请输入订单名称" id="lookOrderID">
+                            <input type="number" placeholder="请输入订单金额" id="searchOrdermoney">
+                            <input type="text" placeholder="请输入订单电话" id="searchOrderphone">
+                            <input type="text" placeholder="请输入订单状态" id="searchOrdernowtime">
+
+                            <button id="addfoodOrderagin">确认添加</button>
+                        </div>
+
+                    </div>
+                    <!-- 隐藏搜索的盒子 -->
+                    <div class="lookorderHidden" style="display: none;">
+                        <p style="font-size: 18px;">搜索订单信息</p></br>
+                        <input type="text" placeholder="请输入搜索订单名称" id="findingOrderID">
+                        <input type="number" placeholder="请输入搜索订单金额" id="findingOrdermoney">
+                        <input type="text" placeholder="请输入订单电话" id="findingOrderphone">
+                        <input type="text" placeholder="请输入订单状态" id="findingOrdernowtime">
+
+                        <button id="findingfoodOrderagin">确认搜素</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="info" style="display: none;">
+            <!-- 外面最大的盒子 -->
+            <!-- 放按钮的 -->
+            <div class="userbtnAll">
+                <div class="findinguser">
+                    <span style="font-size:15px;">用户名</span>
+                    <input type="text" placeholder="请输入用户名" id="findingUserID">
+                    <button id="finduserOrder">确认搜索</button>
+                    <button id="delectuserOrder">取消搜索</button>
+                    <button id="renewuserOrder">重置</button>
+                    <button id="adduserOrder">添加</button>
+                </div>
+            </div>
+            <div class="userHead">
+                <ul class="userHeadTable">
+                    <li class="userHeadconten">用户</li>
+                    <li class="userHeadconten">年龄</li>
+                    <li class="userHeadconten">性别</li>
+                    <li class="userHeadconten">积分</li>
+                    <li class="userHeadconten">操作</li>
+                </ul>
+            </div>
+            <div class="userbodyTable" id="userbodyTable">
+                <ul>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
+            <div class="userChangebtn">
+                <button id="userChangebtnUp">上一页</button>
+                <span>
+                    页数
+                    <span id="userPageNum">1</span>
+                </span>
+                <button id="userChangebtnDown">下一页</button>
+            </div>    
+        </div>
+        <script src="../js/jquery.js"></script>
+        <script src="../js/control.js"></script>
+</body>
+
+</html>

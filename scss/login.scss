@@ -1,0 +1,83 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+input {
+    outline: none;
+    padding: 10px 15px;
+}
+button{
+    border: none;
+    cursor: pointer;
+    padding:5px;
+}
+
+$myColor: white;
+
+.bacPhotos {
+    width: 100%;
+    height: 100vh;
+    background-color: aquamarine;
+    background-image: url('../img/bacPhoto.jpg');
+}
+
+.logingCenter {
+    width: 700px;
+    
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: relative;
+
+}
+
+.logingBox {
+    width: 300px;
+    height: 350px;
+    position: absolute;
+    margin: auto;
+    // background-color: $myColor;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 5px;
+    border: 1px solid;
+    display: flex;
+    background-color: beige;
+    // border-radius:20px 20px 20px 20px;
+}
+
+#nameloginChoice {
+    width: 200px;
+    height: 60px;
+    margin-top: 20px;
+    justify-content: center;
+    margin-left: 5px;
+}
+
+#passloginChoice {
+    width: 200px;
+    height: 100px;
+    margin-top: 20px;
+    justify-content: center;
+    margin-left: 5px;
+}
+
+.title {
+    width: 270px;
+    height: 6px;
+    background-color: beige;
+    padding-top: 40px;
+    margin-left: 30px;
+}
+
+#button {
+    margin-left: 30px;
+}
+.loginbtn{
+margin-left:36px;
+}
