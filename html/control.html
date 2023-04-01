@@ -25,7 +25,7 @@
                 <label class="foodAddinputword">
                     菜品价格
                 </label>
-                    <input type="number" placeholder="请输入菜品价格"
+                    <input  placeholder="请输入菜品价格"
                      id="inputfoodPrice" class="food-user"
                         autocomplete="off">
                     <label class="foodAddinputword">
@@ -61,6 +61,7 @@
             <input type="text" placeholder="请输入食物描述" id="searchFoodphone" autocomplete="off">
             <span class="spaName">种类</span>
             <input type="text" placeholder="请输入食物种类" id="searchFoodnowtime" autocomplete="off">
+            <div id="hiddenFood" style="display: none;"></div>
             <div class="addfoodaginbox">
                 <button id="changefoodagin">确认修改</button>
                 <button id="rightchangefoodagin">取消修改</button>
@@ -120,6 +121,7 @@
             <input type="text" placeholder="请输入性别" autocomplete="off" class="userinput"  id="changeuserGenderinput">
             <label  class="userchangeWords">用户积分</label>
             <input type="text" placeholder="请输入积分" autocomplete="off" class="userinput"  id="changeuserAllsoresinput">
+            <div id="userHiiden"></div>
             <div class="addfoodOrderaginbox">
                 <button id="changeuserOrderagin">确认修改</button>
                 <button id="rightchangeuserOrderagin">取消修改</button>
@@ -141,6 +143,7 @@
             <input type="text" placeholder="请输入订单电话" id="changeOrderphone" autocomplete="off" class="foodChangeinput">
             <label class="foodChangebtnWords">订单状态</label>
             <input type="text" placeholder="请输入订单状态" id="changeOrdernowtime" autocomplete="off"  class="foodChangeinput">
+                 <div id="OrderFood" style="display: none;"></div>
             <div class="foodOrderaginbox">
                 <button id="changefoodOrderagin">确认修改</button>
                 <button id="rightchangefoodOrderagin">取消修改</button>
@@ -204,6 +207,7 @@
             <div class="">
                 <table class="foodBox" border="0">
                     <thead id="foodTable">
+                        
                         <tr>
                             <th>菜品名称</th>
                             <th>价格</th>
@@ -274,7 +278,7 @@
                 <div class="orderChangebtn">
                     <button id="orderChangebtnUp">上一页</button>
                     <span class="newOrderpage">
-                        页数
+                        当前页数
                         <span id="orderPageNum">1</span>
                     </span>
                     <button id="orderChangebtnDown">下一页</button>
