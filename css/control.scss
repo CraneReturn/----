@@ -1,0 +1,1039 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+input {
+
+    outline: none;
+    border: 1px solid black;
+    padding: 9px;
+
+}
+
+button {
+    border: none;
+    cursor: pointer;
+}
+
+$myColor: aliceblue;
+
+.nail {
+    width: 200px;
+    height: 100vh;
+    // background-color: aqua;
+    display: flex;
+    flex-direction: column;
+}
+
+.Foodnail,
+.ordernail,
+.usernail {
+    width: 100%;
+    height: 200px;
+    background-color: beige;
+    margin-top: 20px;
+    // padding-top: px;
+
+}
+
+.ordernail {
+    background-color: aliceblue;
+}
+
+.Foodnail>ul,
+.ordernail>ul,
+.usernail>ul {
+    list-style-type: none;
+    margin-top: 50px;
+    padding: 20px;
+    // padding-top: 20px;
+    width: 150px;
+    height: 80px;
+}
+
+.Foodnail>ul>p,
+.ordernail>ul>p,
+.usernail>ul>p {
+    padding-top: 0px;
+}
+
+.userOwnnail {
+    // float: right;
+    // height:
+    width: 1200px;
+    margin-left: 100px;
+    // display: flex;
+    background-color: $myColor;
+    position: absolute;
+    left: 200px;
+    top: 22px;
+    height: auto;
+}
+#foodinfo{
+    width:1200px;
+    height:auto;
+    background-color: aliceblue;
+}
+
+// 添加的盒子的样式
+
+.food-user {
+    margin-top: 30px;
+    margin-left: 10px;
+    padding: 6px;
+}
+
+
+
+#food-user-finding {
+    margin-top: 20px;
+    margin-left:50px;
+  
+}
+
+
+.userPhotos {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    // background-color: black;
+    overflow: hidden;
+}
+
+.userPhotos>img {
+    width: 100px;
+    height: 100px;
+}
+
+#userShow {
+    display: flex;
+    list-style-type: none;
+    position: relative;
+    top: -100px;
+}
+
+#userShow>li {
+    justify-content: space-around;
+    float: left;
+    padding-left: 40px;
+    margin-left: 206px;
+    margin-top: 30px;
+}
+
+.AllFood {
+    width: 1200px;
+    background-color: $myColor;
+    position: absolute;
+    top:111px;
+    left: -100px;
+    margin-left: 100px;
+    margin-top: 20px;
+}
+
+#foodHead>li {
+    float: left;
+    justify-content: center;
+    margin-left: 133px;
+    width: 108px;
+    padding-top: 10px;
+    color:deepskyblue;
+}
+
+#foodHead {
+    width: 1200px;
+    height: 80px;
+    display: flex;
+    list-style-type: none;
+    margin-left:-17px;
+}
+
+.foodBox {
+    width: 1200px;
+    height: auto;
+    margin-left:20px;
+    margin-top:-30px;
+}
+
+#foodTable {
+    width: 100%;
+    height: auto;
+}
+
+#foodTable >tr>th {
+    justify-content: center;
+    list-style: none;
+    height: 40px;
+    padding-top: 10px;
+    width:50px;
+    margin-left:120px;
+}
+
+.foodChangebtn {
+    width: 100%;
+    // background-color: aqua;
+    height: 50px;
+    margin-top:66px;
+    margin-left:237px;
+
+}
+#foodpageChange{
+    padding: 6px;
+    background-color: darkseagreen;
+    color:white;
+}
+.addFoodbtn{
+    width: 100%;
+    margin-top: 20px;
+}
+#addFoodbtn{
+    margin-left:156px;
+    padding: 6px;
+    color:white;
+    background-color:darkseagreen;
+}
+#delectdddFood{
+    margin-left:10px;
+    padding: 6px;
+    color:white;
+    background-color: rgb(197, 58, 58);
+}
+#foodPageNum {
+    width: 10px;
+    height: 10px;
+    background-color: beige;
+    margin-right: 3px;
+}
+
+.infoUlSty {
+    display: flex;
+}
+
+.infoUlSty>li {
+    width: 200px;
+}
+
+#addFood {
+    background-color: lightblue;
+    width: 10px;
+    height: 10px;
+    margin-left: 290px;
+    padding:6px;
+    color:white;
+
+}
+#findFood{
+    margin-top:5px;
+    margin-left:217px;
+}
+.findFoodwords{
+    background-color:lightblue;
+    padding:5px;
+    padding-bottom: 5px;
+    color:white;
+    border-radius: 10px;
+}
+.foodNewTable{
+    margin-top:30px;
+}
+
+#lookFood {
+    background-color: lightblue;
+    width: 10px;
+    height: 10px;
+    padding:6px;
+    margin-left: 20px;
+    color:white;
+}
+
+#reNewFood {
+    background-color: lightblue;
+    width: 10px;
+    height: 10px;
+    padding:6px;
+    margin-left: 5px;
+    color:white
+}
+#search{
+    padding:7px;
+    margin-left: 10px;
+}
+.delectFood,.changeFood{
+    padding: 6px;
+    background-color: darkseagreen;
+    color:white;
+}
+#foodChangebtnUp,#foodChangebtnDown{
+    padding: 8px;
+    background-color: darkseagreen;
+    color:white;
+    border-radius: 5px;
+    margin-left: 32px;
+
+}
+.foodnowPages{
+    margin-left:42px;
+}
+.newpaneve{
+    margin-left: 198px;
+}
+// 第二部分样式
+$mytipColor:lightblue;
+#billAll {
+    width: 100%;
+    height: 30px;
+    color: deepskyblue;
+}
+#orderName{
+    color:white;
+    background-color: $mytipColor;
+    margin-left:82px;
+    padding: 6px;
+    border-radius: 8px;
+}
+#findingOrderID{
+    margin-left: 10px;
+    padding: 6px;
+}
+
+#billAll>li {
+    float: left;
+    padding-left: 40px;
+    margin-left: 112px;
+    margin-top: 20px;
+    list-style-type: none;
+}
+
+#orderHead {
+    width: 100%;
+    height: 200px;
+    margin: auto;
+    // margin-top: 40px;
+}
+
+.orderTable>li {
+    list-style-type: none;
+    // margin-left:184px;
+    // margin-top: 20px;
+}
+
+.orderconten {
+    float: left;
+    width: 50px;
+    height: 20px;
+    margin-left: 163px;
+    margin-top: 20px;
+
+
+}
+
+.orderChangebtn {
+    margin: 0 auto;
+    margin-top: 100px;
+    margin-bottom: 30px;
+}
+
+#orderPageNum {
+    width: 10px;
+    height: 10px;
+    background-color: beige;
+    margin-right: 3px;
+}
+#orderChangebtnDown{
+    margin-left:27px;
+    padding: 8px;
+    color: white;
+    background-color: darkseagreen;
+    border-radius: 5px;
+    margin-right: 8px;
+}
+.delectfoodOrder{
+    padding: 7px;
+    color:white;
+    background-color: darkseagreen;
+}
+.newevepages{
+    margin-left:280px;
+}
+.changefoodOrder{
+    padding: 7px;
+    margin-left: 61px;
+    color:white;
+    background-color: darkseagreen;
+
+}
+.orderButtonall {
+    margin: 0 auto;
+}
+.NeworderpageAll{
+    margin-left:20px;
+}
+#orderpageChange{
+    padding: 6px;
+    background-color: darkseagreen;
+    color: white;
+    margin-left:6px ;
+}
+#orderChangebtnUp{
+    margin-left: 295px;
+    padding: 8px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    color: white;
+    background-color: darkseagreen;
+    border-radius: 5px;
+}
+.orderChangebtnAll{
+    margin-top:-20px;
+}
+.newOrderpage{
+    margin-left:40px;
+}
+.findfoodOrderHidden {
+    position: absolute;
+    float: none;
+    background-color: white;
+    padding-top: 10px;
+    z-index: 60;
+    width: 400px;
+    height: auto;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+$myboxtipcolor:darkseagreen;
+
+.findfoodOrderHidden>p {
+    text-align: center;
+    color:cadetblue;
+    font-size: 10px;
+    margin-top: 15px;
+}
+
+#addfoodOrder {
+    margin-top: 10px;
+    margin-left:447px;
+    padding:7px;
+    background-color: $mytipColor;
+    color: white;
+    
+
+}
+.newAddorderWord{
+    background-color: $myboxtipcolor;
+    color:white;
+    padding: 6px;
+    width:80px;
+    display: inline-block;
+    margin-left: 54px;
+    border-radius: 6px;
+    margin-top: 20px;
+}
+.newinputOrder{
+    padding: 7px;
+    margin-left: 20px;
+}
+
+#orderbigBox {
+    width: 1200px;
+    background-color: $myColor;
+    height: auto;
+}
+
+.lookorderHidden {
+    margin-top: 20px;
+    position: relative;
+    float: none;
+    z-index: 10;
+    background-color: $myColor;
+    padding-top: 10px;
+}
+
+.lookorderHidden>input {
+    margin-top: 8px;
+    margin-left: 45px;
+    margin-bottom: 5px;
+}
+
+.lookorderHidden>p {
+    margin-top: 5px;
+}
+
+#findingfoodOrderagin {
+    margin-top: 10px;
+    position: relative;
+}
+
+// 搜索框
+.findingorderupbox {
+    margin-left: 154px;
+    margin-top:-26px;
+    margin-bottom:20px;
+}
+
+.findingorderupbox>span {
+    margin-right: 10px;
+}
+#findfoodOrder{
+    padding: 8px;
+    margin-left: 15px;
+    color:white;
+    background-color:$mytipColor;
+    font-size: 13px;
+
+}
+#renewfoodOrder{
+    padding: 8px;
+    margin-left: 8px;
+    color:white;
+    background-color:$mytipColor;
+    font-size: 13px;
+}
+
+// 添加外面的盒子
+.orderBoxShadow {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background-color: rgba(0, 0, 0, .6);
+    z-index: 30;
+}
+
+.addfoodOrderaginbox {
+    margin-top: 15px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+}
+
+#addfoodOrderagin {
+    background-color:$myboxtipcolor;
+    padding:6px;
+    width: 73px;
+    height: 27px;
+    color:white;
+    margin-left:126px;
+    
+}
+
+#rightaddfoodOrderagin {
+    background-color: rgb(223, 39, 76);
+    padding: 6px;
+    width: 73px;
+    height: 27px;
+    color:white;
+    margin-left: 15px;
+}
+
+#changefoodOrder {
+    margin-left: 5px;
+}
+
+.orderOperator {
+    width: 70px;
+    margin-left: 150px;
+}
+
+
+// 修改盒子
+.changeorderBoxShadow {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background-color: rgba(0, 0, 0, .6);
+    z-index: 30;
+}
+
+.changefoodOrderaginbox {
+    margin-top: 15px;
+    margin-left: 127px;
+    margin: 0 auto;
+
+}
+
+#changefoodOrderagin {
+    background-color: $myboxtipcolor;
+    padding: 8px;
+    width: 73px;
+    height: 27px;
+    color:white;
+}
+.foodOrderaginbox{
+    margin-top: 40px;
+    margin-left: 126px;
+    margin-bottom: 20px;
+
+}
+
+#rightchangefoodOrderagin {
+    background-color: rgb(215, 31, 68);
+    width: 73px;
+    height: 27px;
+    padding: 8px;
+    color: white;
+}
+
+#changefoodOrder {
+    margin-left: 5px;
+}
+
+.orderOperator {
+    width: 97px;
+    margin-left: 150px;
+}
+
+.changefoodOrderHidden {
+    position: absolute;
+    float: none;
+    background-color: white;
+    padding-top: 10px;
+    z-index: 60;
+    width: 400px;
+    height:auto;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.foodChangebtnWords{
+    display: inline-block;
+    margin-left: 50px;
+    color:white;
+    background-color: $myboxtipcolor;
+    margin-top: 18px;
+    padding: 6px;
+    border-radius: 5px;
+}
+.foodChangeinput{
+    width:200px;
+    margin-left: 20px;
+}
+.changefoodOrderHidden>p {
+    text-align: center;
+    color:$mytipColor;
+    margin-top: 20px;
+}
+
+.changefoodOrderaginbox>span {
+    margin-right: 10px;
+}
+
+.changefoodOrderHidden input {
+    margin: left 32px;
+    padding: 6px;
+    margin-top: 18px;
+    padding: 7px;
+}
+
+.userbtnAll {
+    width: 100%;
+    margin-top: -10px;
+}
+#findingUserID{
+    padding: 9px;
+}
+#finduserOrder{
+    margin-left: 25px;
+    padding: 6px;
+    color:white;
+    background-color: $mytipColor;
+}
+#delectuserOrderbtn{
+    margin-left: 6px;
+    padding: 6px;
+    color:white;
+    background-color: $mytipColor;
+}
+.findinguser>p {
+    padding: 5px 5px;
+}
+.findinguser>span{
+    margin-left:50px;
+}
+.delectuserOrder{
+    padding: 6px;
+    color:white;
+    background-color: $myboxtipcolor;
+    margin-left:-8px;
+
+}
+.changeuserOrder{
+    padding: 6px;
+    color:white;
+    background-color: $myboxtipcolor;
+    margin-left:4px;
+}
+
+.findinguser {
+    margin-left: 152px;
+}
+#renewuserOrder{
+    margin-left: 6px;
+    padding: 6px;
+    color:white;
+    background-color: $mytipColor;
+}
+
+#findingUserID {
+    padding: 5px 5px;
+    margin-left: 20px;
+    margin-top: -20px;
+}
+
+#adduserOrder {
+    margin-left: 350px;
+    padding: 6px;
+    background-color: $mytipColor;
+    color:white;
+}
+
+.userHeadTable {
+    list-style: none;
+    width: 100%;
+    height: 50px;
+    color: deepskyblue;
+}
+
+.userHeadTable>li {
+    float: left;
+    margin-left: 141px;
+    margin-top: 30px;
+    width: 84px;
+
+}
+
+.userTableAll {
+    list-style: none;
+    width: 100%;
+    height: 30px;
+    margin-top: 10px;
+}
+
+.userconten {
+    float: left;
+    margin-left: 141px;
+    margin-top: 20px;
+    width: 84px;
+    height: 25px;
+}
+
+.delectuserOrder {
+    margin-right: 5px;
+}
+
+.delectuserOrder,
+.changeuserOrder {
+    padding: 5px;
+}
+// 用户的盒子
+.userBoxShadow {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background-color: rgba(0, 0, 0, .6);
+    z-index: 30;
+}
+
+// .userOrderaginbox {
+//     margin-top: 15px;
+//     margin-left: 127px;
+
+// }
+
+#adduserOrderagin {
+    margin-left: 156px;
+    padding: 6px;
+    color: white;
+    background-color: darkseagreen;
+}
+#changeuserOrderagin{
+    margin-left: 156px;
+    padding: 6px;
+    color: white;
+    background-color: darkseagreen;
+}
+#rightchangeuserOrderagin{
+    margin-left: 10px;
+    padding: 6px;
+    color: white;
+    background-color: #c53a3a;
+}
+
+#rightadduserOrderagin {
+    margin-left: 10px;
+    padding: 6px;
+    color: white;
+    background-color: #c53a3a;
+}
+
+
+.userOrderHidden {
+    position: absolute;
+    float: none;
+    background-color: white;
+    padding-top: 10px;
+    z-index: 60;
+    width: 450px;
+    height: auto;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.userChangeHidden{
+    position: absolute;
+    float: none;
+    background-color: white;
+    padding-top: 10px;
+    z-index: 60;
+    width: 450px;
+    height: auto;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.userChangeBoxShadow{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background-color: rgba(0, 0, 0, .6);
+    z-index: 30;
+}
+.userChangeHidden>p{
+    text-align: center;
+    font-size: 20px;
+    color: cadetblue;
+}
+.userOrderHidden>p {
+    text-align: center;
+    font-size: 20px;
+    color: cadetblue;
+}
+.useraddWords{
+    background-color: darkseagreen;
+    color: white;
+    padding: 6px;
+    width: 80px;
+    display: inline-block;
+    margin-left: 54px;
+    border-radius: 6px;
+    margin-top: 20px;
+
+}
+.userchangeWords{
+    background-color: darkseagreen;
+    color: white;
+    padding: 6px;
+    width: 80px;
+    display: inline-block;
+    margin-left: 54px;
+    border-radius: 6px;
+    margin-top: 20px;
+
+}
+.userOrderHidden>input {
+    margin-top: 8px;
+    margin-left: 31px;
+    margin-bottom: 5px;
+    padding: 6px;
+}
+
+.userChangeHidden>input {
+    margin-top: 8px;
+    margin-left: 31px;
+    margin-bottom: 5px;
+    padding: 6px;
+}
+.userChangebtn {
+    // width: 300px;
+    // background-color: aqua;
+    height: 50px;
+    margin: 0 auto;
+    margin-top:85px;
+}
+#userChangebtnUp,#userChangebtnDown{
+    padding: 8px;
+}
+.orderBoxShadow {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background-color: rgba(0, 0, 0, .6);
+    z-index: 30;
+}
+
+// 添加食物的盒子
+.addingFoodBoxshadow{
+    width:100%;
+    height:100%;
+    position: fixed;
+    background-color: rgba(0, 0, 0, .6);
+    z-index: 20;
+}
+.addfoodBoxHidden{
+    position: absolute;
+    float: none;
+    background-color: white;
+    padding-top: 10px;
+    z-index: 60;
+    width: 400px;
+    height: 350px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.addfoodBoxHidden>p{
+    text-align: center;
+}
+.findfoodHidden>p{
+    text-align: center;
+    font-size: 20px;
+    padding: 6px;
+}
+.foodAddinputword{
+    margin-left: 76px;
+    background-color:darkseagreen;
+    color: white;
+    padding: 6px;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+// 修改食物的盒子
+.foodBoxShadow {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background-color: rgba(0, 0, 0, .6);
+    z-index: 30;
+}
+
+#addfoodagin {
+    background-color: darkgreen;
+    padding: 5px, 5px;
+    width: 73px;
+    height: 27px;
+}
+
+#rightaddfoodagin {
+    background-color: crimson;
+    padding: 5px, 5px;
+    width: 73px;
+    height: 27px;
+}
+
+
+.findfoodHidden {
+    position: absolute;
+    float: none;
+    background-color: white;
+    padding-top: 10px;
+    z-index: 60;
+    width: 400px;
+    height: auto;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.findfoodHidden>p {
+    text-align: center;
+}
+
+
+.addfoodaginbox {
+    width: 300px;
+    // background-color: aqua;
+    height: 50px;
+    margin: 0 auto;
+    margin-top:20px;
+    margin-left: 100px;
+}
+.findfoodHidden {
+    position: absolute;
+    float: none;
+    background-color: white;
+    padding-top: 10px;
+    z-index: 60;
+    width: 400px;
+    height:auto;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.foodAllpage{
+    margin-left:50px;
+}
+#foodAllpagenum{
+    margin-left: 20px;
+}
+
+.findfoodHidden>p {
+    text-align: center;
+}
+
+.findfoodHidden>input {
+    margin-top: -20px;
+    margin-left:35px;
+    margin-bottom: 5px;
+    width:200px;
+    padding:6px;
+}
+.findinguser>span{
+    background-color:$mytipColor;
+    color:white;
+    padding: 8px;
+    border-radius:6px;
+
+
+}
+.spaName{
+    width:50x;
+    display: inline-block;
+    margin-left: 40px;
+    margin-top:20px;
+    background-color:darkseagreen;
+    padding: 6px;
+    color:white;
+    border-radius: 8px;
+}
+#changefoodagin{
+    padding: 6px;
+    color:white;
+    background-color:darkseagreen ;
+    margin-left: 10px;
+}
+#rightchangefoodagin{
+    padding: 6px;
+    background-color:firebrick;
+    color:white;
+    margin-left: 20px;
+
+}
+#userChangebtnUp{
+    background-color: $myboxtipcolor;
+    color: white;
+    border-radius: 5px;
+    margin-left:301px;
+}
+#userChangebtnDown{
+    background-color: $myboxtipcolor;
+    color: white;
+    border-radius: 6px;
+    margin-left: 15px;
+}
+#userpageChange{
+    padding: 6px;
+    background-color: darkseagreen;
+    color:white;
+
+}
+#userPageNum{
+   background-color: antiquewhite;
+}
+.noweverpages{
+    margin-left:22px ;
+}
+.allpagesUser{
+    margin-left: 35px;
+}
+.oldnoweverpages{
+    margin-left:227px;
+}

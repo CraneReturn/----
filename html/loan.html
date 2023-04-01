@@ -11,14 +11,27 @@
       <div class="bigBoxground">
         <!-- <img src="../img/bacPhoto.jpg" > -->
         <div class="centerbigbox">
-            <p class="loantitle" style="font-size:20px">用户登录</p>
+            <div id="loantitle">
+                  <p class="loaningtitle" style="font-size:25px">用户注册</p>
+                </div>
             <div class="userconten">
-                <p class="loantitle">用户名</p>
-                <input type="text" placeholder="请输入用户名称" id="addOrderID">
-                <p class="loantitle">密码</p>
-                <input type="text" placeholder="请输入用户密码" id="addorderKey">
-                <p class="loantitle">邮箱</p>
-                <input type="text" placeholder="请输入用户邮箱" id="addorderEmail">
+                <div class="box">
+                    <label class="loantitle">用户</lable>
+                    <input type="text" placeholder="请输入用户名称" id="addOrderID">
+                </div>
+                <div class="box">
+                    <lable class="loantitle">密码</lable>
+                    <input type="password" placeholder="请输入用户密码" id="addorderKey">
+                </div>
+                <div class="box">
+                    <label class="loantitle">邮箱</lable>
+                     <input type="text" placeholder="请输入用户邮箱" id="addorderEmail">
+                </div>
+                <div class="box">
+                    <lable class="loantitle" id="Youreceive">验证码</lable>
+                <input type="text" placeholder="请输入验证码" id="sureYoureceive">
+                <button id="getRecive">获取验证码</button>
+                </div>
                 <div class="bottombtn">
                     <button id="aready">注册</button>
                     <button id="delectaready">取消注册</button>

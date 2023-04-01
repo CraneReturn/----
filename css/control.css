@@ -5,6 +5,8 @@
 
 input {
   outline: none;
+  border: 1px solid black;
+  padding: 9px;
 }
 
 button {
@@ -26,7 +28,6 @@ button {
   height: 200px;
   background-color: beige;
   margin-top: 20px;
-  padding-top: px;
 }
 
 .ordernail {
@@ -55,22 +56,20 @@ button {
   background-color: aliceblue;
   position: absolute;
   left: 200px;
-  top: 0px;
+  top: 22px;
+  height: auto;
 }
 
-#foodAddUser {
-  width: 168px;
-  height: 188px;
-  z-index: 20;
-  float: left;
-  position: relative;
-  left: 451px;
-  top: 200px;
-  background-color: skyblue;
+#foodinfo {
+  width: 1200px;
+  height: auto;
+  background-color: aliceblue;
 }
 
 .food-user {
-  margin-top: 10px;
+  margin-top: 30px;
+  margin-left: 10px;
+  padding: 6px;
 }
 
 #food-user-finding {
@@ -101,16 +100,15 @@ button {
   justify-content: space-around;
   float: left;
   padding-left: 40px;
-  margin-left: 100px;
+  margin-left: 206px;
   margin-top: 30px;
 }
 
 .AllFood {
   width: 1200px;
-  height: 275px;
   background-color: aliceblue;
   position: absolute;
-  top: 100px;
+  top: 111px;
   left: -100px;
   margin-left: 100px;
   margin-top: 20px;
@@ -120,8 +118,9 @@ button {
   float: left;
   justify-content: center;
   margin-left: 133px;
-  width: 65px;
+  width: 108px;
   padding-top: 10px;
+  color: deepskyblue;
 }
 
 #foodHead {
@@ -129,14 +128,14 @@ button {
   height: 80px;
   display: flex;
   list-style-type: none;
+  margin-left: -17px;
 }
 
 .foodBox {
   width: 1200px;
   height: auto;
-  position: absolute;
-  top: 160px;
-  left: 63px;
+  margin-left: 20px;
+  margin-top: -30px;
 }
 
 #foodTable {
@@ -144,22 +143,45 @@ button {
   height: auto;
 }
 
-#foodTable th {
+#foodTable > tr > th {
   justify-content: center;
   list-style: none;
   height: 40px;
-  float: left;
-  margin-left: 60px;
-  width: 120px;
   padding-top: 10px;
+  width: 50px;
+  margin-left: 120px;
 }
 
 .foodChangebtn {
-  width: 300px;
+  width: 100%;
   height: 50px;
-  position: absolute;
-  left: 400px;
-  top: 402px;
+  margin-top: 66px;
+  margin-left: 237px;
+}
+
+#foodpageChange {
+  padding: 6px;
+  background-color: darkseagreen;
+  color: white;
+}
+
+.addFoodbtn {
+  width: 100%;
+  margin-top: 20px;
+}
+
+#addFoodbtn {
+  margin-left: 156px;
+  padding: 6px;
+  color: white;
+  background-color: darkseagreen;
+}
+
+#delectdddFood {
+  margin-left: 10px;
+  padding: 6px;
+  color: white;
+  background-color: #c53a3a;
 }
 
 #foodPageNum {
@@ -178,32 +200,93 @@ button {
 }
 
 #addFood {
-  background-color: beige;
+  background-color: lightblue;
   width: 10px;
   height: 10px;
-  margin-left: 20px;
+  margin-left: 290px;
+  padding: 6px;
+  color: white;
 }
 
 #findFood {
-  width: auto;
-  height: auto;
+  margin-top: 5px;
+  margin-left: 217px;
+}
+
+.findFoodwords {
+  background-color: lightblue;
+  padding: 5px;
+  padding-bottom: 5px;
+  color: white;
+  border-radius: 10px;
+}
+
+.foodNewTable {
+  margin-top: 30px;
 }
 
 #lookFood {
-  background-color: beige;
+  background-color: lightblue;
   width: 10px;
   height: 10px;
+  padding: 6px;
+  margin-left: 20px;
+  color: white;
 }
 
 #reNewFood {
-  background-color: beige;
+  background-color: lightblue;
   width: 10px;
   height: 10px;
+  padding: 6px;
+  margin-left: 5px;
+  color: white;
+}
+
+#search {
+  padding: 7px;
+  margin-left: 10px;
+}
+
+.delectFood, .changeFood {
+  padding: 6px;
+  background-color: darkseagreen;
+  color: white;
+}
+
+#foodChangebtnUp, #foodChangebtnDown {
+  padding: 8px;
+  background-color: darkseagreen;
+  color: white;
+  border-radius: 5px;
+  margin-left: 32px;
+}
+
+.foodnowPages {
+  margin-left: 42px;
+}
+
+.newpaneve {
+  margin-left: 198px;
 }
 
 #billAll {
   width: 100%;
   height: 30px;
+  color: deepskyblue;
+}
+
+#orderName {
+  color: white;
+  background-color: lightblue;
+  margin-left: 82px;
+  padding: 6px;
+  border-radius: 8px;
+}
+
+#findingOrderID {
+  margin-left: 10px;
+  padding: 6px;
 }
 
 #billAll > li {
@@ -233,9 +316,9 @@ button {
 }
 
 .orderChangebtn {
-  width: 300px;
-  height: 50px;
   margin: 0 auto;
+  margin-top: 100px;
+  margin-bottom: 30px;
 }
 
 #orderPageNum {
@@ -245,8 +328,63 @@ button {
   margin-right: 3px;
 }
 
+#orderChangebtnDown {
+  margin-left: 27px;
+  padding: 8px;
+  color: white;
+  background-color: darkseagreen;
+  border-radius: 5px;
+  margin-right: 8px;
+}
+
+.delectfoodOrder {
+  padding: 7px;
+  color: white;
+  background-color: darkseagreen;
+}
+
+.newevepages {
+  margin-left: 280px;
+}
+
+.changefoodOrder {
+  padding: 7px;
+  margin-left: 61px;
+  color: white;
+  background-color: darkseagreen;
+}
+
 .orderButtonall {
   margin: 0 auto;
+}
+
+.NeworderpageAll {
+  margin-left: 20px;
+}
+
+#orderpageChange {
+  padding: 6px;
+  background-color: darkseagreen;
+  color: white;
+  margin-left: 6px;
+}
+
+#orderChangebtnUp {
+  margin-left: 295px;
+  padding: 8px;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  color: white;
+  background-color: darkseagreen;
+  border-radius: 5px;
+}
+
+.orderChangebtnAll {
+  margin-top: -20px;
+}
+
+.newOrderpage {
+  margin-left: 40px;
 }
 
 .findfoodOrderHidden {
@@ -256,7 +394,7 @@ button {
   padding-top: 10px;
   z-index: 60;
   width: 400px;
-  height: 300px;
+  height: auto;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -264,34 +402,39 @@ button {
 
 .findfoodOrderHidden > p {
   text-align: center;
+  color: cadetblue;
+  font-size: 10px;
+  margin-top: 15px;
 }
 
 #addfoodOrder {
   margin-top: 10px;
   margin-left: 447px;
-  padding: 4px;
-  background-color: beige;
+  padding: 7px;
+  background-color: lightblue;
+  color: white;
 }
 
-.findfoodOrderHidden > input {
-  margin-top: 8px;
-  margin-left: 45px;
-  margin-bottom: 5px;
+.newAddorderWord {
+  background-color: darkseagreen;
+  color: white;
+  padding: 6px;
+  width: 80px;
+  display: inline-block;
+  margin-left: 54px;
+  border-radius: 6px;
+  margin-top: 20px;
+}
+
+.newinputOrder {
+  padding: 7px;
+  margin-left: 20px;
 }
 
 #orderbigBox {
   width: 1200px;
   background-color: aliceblue;
   height: auto;
-}
-
-.findfoodOrderHidden > p {
-  margin-top: 5px;
-}
-
-.findfoodOrderHidden input {
-  margin-top: 10px;
-  margin-left: 121px;
 }
 
 .lookorderHidden {
@@ -320,12 +463,28 @@ button {
 
 .findingorderupbox {
   margin-left: 154px;
-  margin-top: -37px;
+  margin-top: -26px;
   margin-bottom: 20px;
 }
 
 .findingorderupbox > span {
   margin-right: 10px;
+}
+
+#findfoodOrder {
+  padding: 8px;
+  margin-left: 15px;
+  color: white;
+  background-color: lightblue;
+  font-size: 13px;
+}
+
+#renewfoodOrder {
+  padding: 8px;
+  margin-left: 8px;
+  color: white;
+  background-color: lightblue;
+  font-size: 13px;
 }
 
 .orderBoxShadow {
@@ -338,23 +497,26 @@ button {
 
 .addfoodOrderaginbox {
   margin-top: 15px;
-  margin-left: 133px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 #addfoodOrderagin {
-  background-color: green;
-  padding: 5px, 5px;
+  background-color: darkseagreen;
+  padding: 6px;
   width: 73px;
   height: 27px;
   color: white;
+  margin-left: 126px;
 }
 
 #rightaddfoodOrderagin {
-  background-color: crimson;
-  padding: 5px, 5px;
+  background-color: #df274c;
+  padding: 6px;
   width: 73px;
   height: 27px;
   color: white;
+  margin-left: 15px;
 }
 
 #changefoodOrder {
@@ -364,12 +526,6 @@ button {
 .orderOperator {
   width: 70px;
   margin-left: 150px;
-}
-
-#renewfoodOrder,
-#findfoodOrder,
-#delectfindfoodOrder {
-  padding: 4px;
 }
 
 .changeorderBoxShadow {
@@ -387,22 +543,25 @@ button {
 }
 
 #changefoodOrderagin {
-  background-color: darkgreen;
-  padding: 5px, 5px;
+  background-color: darkseagreen;
+  padding: 8px;
   width: 73px;
   height: 27px;
+  color: white;
 }
 
 .foodOrderaginbox {
-  margin-top: 20px;
+  margin-top: 40px;
   margin-left: 126px;
+  margin-bottom: 20px;
 }
 
 #rightchangefoodOrderagin {
-  background-color: crimson;
-  padding: 5px, 5px;
+  background-color: #d71f44;
   width: 73px;
   height: 27px;
+  padding: 8px;
+  color: white;
 }
 
 #changefoodOrder {
@@ -410,7 +569,7 @@ button {
 }
 
 .orderOperator {
-  width: 70px;
+  width: 97px;
   margin-left: 150px;
 }
 
@@ -421,14 +580,31 @@ button {
   padding-top: 10px;
   z-index: 60;
   width: 400px;
-  height: 300px;
+  height: auto;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
 
+.foodChangebtnWords {
+  display: inline-block;
+  margin-left: 50px;
+  color: white;
+  background-color: darkseagreen;
+  margin-top: 18px;
+  padding: 6px;
+  border-radius: 5px;
+}
+
+.foodChangeinput {
+  width: 200px;
+  margin-left: 20px;
+}
+
 .changefoodOrderHidden > p {
   text-align: center;
+  color: lightblue;
+  margin-top: 20px;
 }
 
 .changefoodOrderaginbox > span {
@@ -436,21 +612,66 @@ button {
 }
 
 .changefoodOrderHidden input {
-  margin-top: 10px;
-  margin-left: 121px;
+  margin: left 32px;
+  padding: 6px;
+  margin-top: 18px;
+  padding: 7px;
 }
 
 .userbtnAll {
   width: 100%;
-  margin-top: -30px;
+  margin-top: -10px;
+}
+
+#findingUserID {
+  padding: 9px;
+}
+
+#finduserOrder {
+  margin-left: 25px;
+  padding: 6px;
+  color: white;
+  background-color: lightblue;
+}
+
+#delectuserOrderbtn {
+  margin-left: 6px;
+  padding: 6px;
+  color: white;
+  background-color: lightblue;
 }
 
 .findinguser > p {
   padding: 5px 5px;
 }
 
+.findinguser > span {
+  margin-left: 50px;
+}
+
+.delectuserOrder {
+  padding: 6px;
+  color: white;
+  background-color: darkseagreen;
+  margin-left: -8px;
+}
+
+.changeuserOrder {
+  padding: 6px;
+  color: white;
+  background-color: darkseagreen;
+  margin-left: 4px;
+}
+
 .findinguser {
-  margin-left: 136px;
+  margin-left: 152px;
+}
+
+#renewuserOrder {
+  margin-left: 6px;
+  padding: 6px;
+  color: white;
+  background-color: lightblue;
 }
 
 #findingUserID {
@@ -459,22 +680,18 @@ button {
   margin-top: -20px;
 }
 
-#renewuserOrder,
-#finduserOrder,
-#delectuserfoodOrder {
-  padding: 4px;
-}
-
 #adduserOrder {
-  margin-left: 500px;
+  margin-left: 350px;
   padding: 6px;
-  background-color: beige;
+  background-color: lightblue;
+  color: white;
 }
 
 .userHeadTable {
   list-style: none;
   width: 100%;
   height: 50px;
+  color: deepskyblue;
 }
 
 .userHeadTable > li {
@@ -517,17 +734,31 @@ button {
 }
 
 #adduserOrderagin {
-  background-color: darkgreen;
-  padding: 5px, 5px;
-  width: 73px;
-  height: 27px;
+  margin-left: 156px;
+  padding: 6px;
+  color: white;
+  background-color: darkseagreen;
+}
+
+#changeuserOrderagin {
+  margin-left: 156px;
+  padding: 6px;
+  color: white;
+  background-color: darkseagreen;
+}
+
+#rightchangeuserOrderagin {
+  margin-left: 10px;
+  padding: 6px;
+  color: white;
+  background-color: #c53a3a;
 }
 
 #rightadduserOrderagin {
-  background-color: crimson;
-  padding: 5px, 5px;
-  width: 73px;
-  height: 27px;
+  margin-left: 10px;
+  padding: 6px;
+  color: white;
+  background-color: #c53a3a;
 }
 
 .userOrderHidden {
@@ -536,32 +767,90 @@ button {
   background-color: white;
   padding-top: 10px;
   z-index: 60;
-  width: 400px;
-  height: 300px;
+  width: 450px;
+  height: auto;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
 
+.userChangeHidden {
+  position: absolute;
+  float: none;
+  background-color: white;
+  padding-top: 10px;
+  z-index: 60;
+  width: 450px;
+  height: auto;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.userChangeBoxShadow {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 30;
+}
+
+.userChangeHidden > p {
+  text-align: center;
+  font-size: 20px;
+  color: cadetblue;
+}
+
 .userOrderHidden > p {
   text-align: center;
+  font-size: 20px;
+  color: cadetblue;
+}
+
+.useraddWords {
+  background-color: darkseagreen;
+  color: white;
+  padding: 6px;
+  width: 80px;
+  display: inline-block;
+  margin-left: 54px;
+  border-radius: 6px;
+  margin-top: 20px;
+}
+
+.userchangeWords {
+  background-color: darkseagreen;
+  color: white;
+  padding: 6px;
+  width: 80px;
+  display: inline-block;
+  margin-left: 54px;
+  border-radius: 6px;
+  margin-top: 20px;
 }
 
 .userOrderHidden > input {
   margin-top: 8px;
-  margin-left: 119px;
+  margin-left: 31px;
   margin-bottom: 5px;
+  padding: 6px;
+}
+
+.userChangeHidden > input {
+  margin-top: 8px;
+  margin-left: 31px;
+  margin-bottom: 5px;
+  padding: 6px;
 }
 
 .userChangebtn {
-  width: 300px;
   height: 50px;
   margin: 0 auto;
-  margin-top: 58px;
+  margin-top: 85px;
 }
 
 #userChangebtnUp, #userChangebtnDown {
-  padding: 5px;
+  padding: 8px;
 }
 
 .orderBoxShadow {
@@ -570,6 +859,46 @@ button {
   position: fixed;
   background-color: rgba(0, 0, 0, 0.6);
   z-index: 30;
+}
+
+.addingFoodBoxshadow {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 20;
+}
+
+.addfoodBoxHidden {
+  position: absolute;
+  float: none;
+  background-color: white;
+  padding-top: 10px;
+  z-index: 60;
+  width: 400px;
+  height: 350px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.addfoodBoxHidden > p {
+  text-align: center;
+}
+
+.findfoodHidden > p {
+  text-align: center;
+  font-size: 20px;
+  padding: 6px;
+}
+
+.foodAddinputword {
+  margin-left: 76px;
+  background-color: darkseagreen;
+  color: white;
+  padding: 6px;
+  margin-top: 10px;
+  border-radius: 5px;
 }
 
 .foodBoxShadow {
@@ -601,7 +930,7 @@ button {
   padding-top: 10px;
   z-index: 60;
   width: 400px;
-  height: 300px;
+  height: auto;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -615,7 +944,7 @@ button {
   width: 300px;
   height: 50px;
   margin: 0 auto;
-  margin-top: 58px;
+  margin-top: 20px;
   margin-left: 100px;
 }
 
@@ -626,10 +955,18 @@ button {
   padding-top: 10px;
   z-index: 60;
   width: 400px;
-  height: 300px;
+  height: auto;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.foodAllpage {
+  margin-left: 50px;
+}
+
+#foodAllpagenum {
+  margin-left: 20px;
 }
 
 .findfoodHidden > p {
@@ -637,11 +974,77 @@ button {
 }
 
 .findfoodHidden > input {
-  margin-top: 8px;
-  margin-left: 80px;
+  margin-top: -20px;
+  margin-left: 35px;
   margin-bottom: 5px;
+  width: 200px;
+  padding: 6px;
+}
+
+.findinguser > span {
+  background-color: lightblue;
+  color: white;
+  padding: 8px;
+  border-radius: 6px;
 }
 
 .spaName {
-  margin-left: 49px;
+  width: 50x;
+  display: inline-block;
+  margin-left: 40px;
+  margin-top: 20px;
+  background-color: darkseagreen;
+  padding: 6px;
+  color: white;
+  border-radius: 8px;
+}
+
+#changefoodagin {
+  padding: 6px;
+  color: white;
+  background-color: darkseagreen;
+  margin-left: 10px;
+}
+
+#rightchangefoodagin {
+  padding: 6px;
+  background-color: firebrick;
+  color: white;
+  margin-left: 20px;
+}
+
+#userChangebtnUp {
+  background-color: darkseagreen;
+  color: white;
+  border-radius: 5px;
+  margin-left: 301px;
+}
+
+#userChangebtnDown {
+  background-color: darkseagreen;
+  color: white;
+  border-radius: 6px;
+  margin-left: 15px;
+}
+
+#userpageChange {
+  padding: 6px;
+  background-color: darkseagreen;
+  color: white;
+}
+
+#userPageNum {
+  background-color: antiquewhite;
+}
+
+.noweverpages {
+  margin-left: 22px;
+}
+
+.allpagesUser {
+  margin-left: 35px;
+}
+
+.oldnoweverpages {
+  margin-left: 227px;
 }

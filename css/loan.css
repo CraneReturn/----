@@ -8,13 +8,16 @@ input {
   padding: 10px 15px;
   border: 1px solid black;
   margin-top: 10px;
-  margin-left: 50px;
+  margin-left: 35px;
+  border-radius: 6px;
 }
 
 button {
   border: none;
   cursor: pointer;
-  padding: 5px;
+  padding: 8px;
+  color: white;
+  border-radius: 8px;
 }
 
 .bigBoxground {
@@ -24,26 +27,59 @@ button {
 }
 
 .centerbigbox {
-  background-color: white;
+  background-color: beige;
   margin: 0 auto;
-  width: 300px;
+  width: 400px;
   position: relative;
   top: 201px;
   border-radius: 20px;
+  height: auto;
 }
 
 .loantitle {
-  margin-bottom: 5px;
-  padding-left: 50px;
+  padding-top: 20px;
+  margin-left: 40px;
+}
+
+.box {
+  color: darkseagreen;
+  width: 100%;
+}
+
+.loaningtitle {
+  color: darkseagreen;
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 10px;
+}
+
+#loantitle {
+  padding-top: 20px;
 }
 
 .bottombtn {
   margin: 0 auto;
-  margin-left: 70px;
+  margin-left: 147px;
   margin-top: 20px;
   margin-bottom: 20px;
 }
 
 .returnloging {
-  margin-left: 70px;
+  margin-left: 148px;
+}
+
+#aready {
+  background-color: darkseagreen;
+}
+
+#delectaready {
+  background-color: bisque;
+}
+
+#getRecive {
+  background-color: darkseagreen;
+}
+
+#sureYoureceive {
+  margin-left: 20px;
 }

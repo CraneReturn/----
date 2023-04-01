@@ -1,4 +1,6 @@
 let footable = document.getElementById("foodTable");
+var foodpageChange = document.getElementById("foodpageChange");
+
 var len = 0;
 function getData(page, perPage) {
     $.ajax({
@@ -14,12 +16,12 @@ function getData(page, perPage) {
             for (var i = 0; i < result.data.length; i++) {
                 footable.innerHTML += `
                 <tr>
-                <th>${result.data[i].name}</th>
+                <th>${result.data[i].name.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</th>
                 <th>${result.data[i].price}</th>
                 <th>${result.data[i].desc}</th>
                 <th>${result.data[i].typename}</th>
-                <th><button class="delectFood">删除</button></th>
-                <th><button class="changeFood">修改</button></th>
+                <th><button class="delectFood">删除</button> 
+                <button class="changeFood"onclick='changefoodNew(this)'>修改</button></th>
    <th style='display:none'>${JSON.stringify(result.data[i])}</th>
                 </tr>
                 `
@@ -51,28 +53,49 @@ function getData(page, perPage) {
 }
 
 // 修改食物
-var changefoodagin=document.getElementById("changefoodagin");
-var  rightchangefoodagin=document.getElementById("rightchangefoodagin")
-function changefoodNew(obj){
-    foodBoxShadow.style.display="";
-    findfoodHidden.style.display="";
-
+var changefoodagin = document.getElementById("changefoodagin");
+var rightchangefoodagin = document.getElementById("rightchangefoodagin");
+// 获取输入框内容
+var lookFoodID = document.getElementById("lookFoodID");
+var searchFoodmoney = document.getElementById("searchFoodmoney");
+var searchFoodphone = document.getElementById("searchFoodphone");
+var searchFoodnowtime = document.getElementById("searchFoodnowtime");
+// 修改食物留下的问题
+function changefoodNew(food) {
+    foodBoxShadow.style.display = "";
+    console.log(food.parentElement.parentElement.children[0].innerHTML, '00000000');
+    console.log(food.parentElement.children[0].innerHTML, "6666666");
+    lookFoodID.value = food.parentElement.parentElement.children[0].innerHTML;
+    searchFoodmoney.value = food.parentElement.parentElement.children[1].innerHTML;
+    searchFoodphone.value = food.parentElement.parentElement.children[2].innerHTML;
+    searchFoodnowtime.value = food.parentElement.parentElement.children[3].innerHTML;
 }
+
+var changefoodagin = document.getElementById("changefoodagin");
+changefoodagin.onclick = function () {
+    foodBoxShadow.style.display = "none";
+    changeFoodAll(lookFoodID.value, searchFoodmoney.value, searchFoodphone.value, searchFoodnowtime.value);
+}
+var rightchangefoodagin = document.getElementById("rightchangefoodagin");
+rightchangefoodagin.onclick = function () {
+    foodBoxShadow.style.display = "none";
+}
+
 // 修改食物接口
 function changeFoodAll(foodname, foodprice, fooddes, foodtype) {
     $.ajax({
         type: "POST",
         url: "http://118.195.129.130:3000/food/update",
         data: {
-           name:foodname,
-           price:foodprice,
+            name: foodname,
+            price: foodprice,
             desc: fooddes,
-            typename:foodtype
+            typename: foodtype
         },
         success: function (result) {
-            // console.log("---------");
+            console.log("---------");
             console.log(result);
-            getData()
+            getData(foodPageNum.innerHTML, perPage);
         },
         error: function (err) {
             console.log(err)
@@ -89,7 +112,8 @@ function delectFoodMetho(id) {
         },
         success: function (result) {
             console.log(result, 'result1')
-            getData(foodPageNum.innerHTML, 4);
+            getData(foodPageNum.innerHTML, perPage);
+            foodAllpagenum.innerHTML = len;
 
         },
         //error是请求失败之后执行的函数
@@ -102,7 +126,7 @@ function delectFoodMetho(id) {
 var pageSizeFood = 1;
 var pageOutlineFood = 4;
 // 获取修改按钮 为修改做准备
-
+var len;
 // 获取总长度 为后续翻页做准备
 function getFoodLen() {
 
@@ -115,6 +139,7 @@ function getFoodLen() {
         success: function (result) {
             console.log(result, 'result1')
             len = result.pages;
+            foodAllpagenum.innerHTML = len;
         },
         //error是请求失败之后执行的函数
         error: function (err) {
@@ -122,6 +147,8 @@ function getFoodLen() {
         }
     })
 }
+// 显示总条数
+var foodAllpagenum = document.getElementById("foodAllpagenum");
 getFoodLen();
 // 写页面切换
 var foodChangebtnUp = document.getElementById("foodChangebtnUp");
@@ -129,23 +156,16 @@ var foodChangebtnDown = document.getElementById("foodChangebtnDown");
 var foodPageNum = document.getElementById("foodPageNum");
 
 
-// function getFoodPage(foodPageNum, pageOutlineFood) {
-//     $.ajax({
-//         type: "POST",
-//         url: "http://118.195.129.130:3000/food/getInfoByPage",
-//         data: {
-//             page: foodPageNum,
-//             per_page: pageOutlineFood
-//         },
-//         success: function (result) {
-//             console.log(result, 'result')
-//         },
-//         //error是请求失败之后执行的函数
-//         error: function (err) {
-//             console.log(err)
-//         }
-//     })
-// }
+var foodIndex = foodpageChange.selectedIndex;
+// 获取索引
+var perPage = foodpageChange.options[foodIndex].value;
+// 获取里面的值
+function changeperpage() {
+    foodIndex = foodpageChange.selectedIndex;
+    perPage = foodpageChange.options[foodIndex].value;
+    // 重新获取select的值进行切换 重新赋值
+    getData(foodPageNum.innerText, perPage)
+}
 foodChangebtnUp.onclick = function () {
     console.log("1111111,111dasdas");
     foodPageNum.innerHTML--;
@@ -154,23 +174,24 @@ foodChangebtnUp.onclick = function () {
         foodPageNum.innerHTML = 1;
     }
     else {
-        getData(foodPageNum.innerHTML, 4)
+        getData(foodPageNum.innerHTML, perPage)
     }
 
 }
 foodChangebtnDown.onclick = function () {
     foodPageNum.innerHTML++;
-    if (foodPageNum.innerHTML > Math.ceil(len / 5)) {
+    if (foodPageNum.innerHTML > Math.ceil(len / perPage)) {
         alert("这是最后一页");
-        foodPageNum.innerHTML = Math.ceil(len / 5);
+        foodPageNum.innerHTML = Math.ceil(len / perPage);
     }
     else {
-        getData(foodPageNum.innerHTML, 5)
+        getData(foodPageNum.innerHTML, perPage)
     }
 
 }
 // foodChangebtnUp.click();
-getData(1, 4)
+
+getData(1, perPage)
 
 // 点击时候页面会切换 隐藏效果
 
@@ -209,7 +230,8 @@ function addNewFood(foodnewName, foodnewprice, foodnewdesc, foodnewtypename,) {
         },
         success: function (result) {
             console.log(result, 'result3')
-            getData(pageSizeFood, pageOutlineFood);
+            getData(foodPageNum.innerHTML, perPage);
+            foodAllpagenum.innerHTML = len;
 
         },
         error: function (err) {
@@ -219,22 +241,37 @@ function addNewFood(foodnewName, foodnewprice, foodnewdesc, foodnewtypename,) {
 
 }
 var foodAddUser = document.getElementById("foodAddUser");
+var inputfoodName = document.getElementById("inputfoodName");
+
 var inputfoodPrice = document.getElementById("inputfoodPrice");
 var inputfoodDes = document.getElementById("inputfoodDes");
 var inputfoodType = document.getElementById("inputfoodType");
-var fooduserFinding = document.getElementById("food-user-finding");
+// var fooduserFinding = document.getElementById("food-user-finding");
+var addingFoodBoxshadow = document.getElementById("addingFoodBoxshadow");
+var delectdddFood = document.getElementById("delectdddFood");
+var addFoodbtn = document.getElementById("addFoodbtn");
 // 获取input框里面的内容
 addFood.onclick = function () {
-    foodAddUser.style.display = '';
-    console.log("good", fooduserFinding.value)
     // addNewFood(foodAddUser.value, inputfoodPrice.value, inputfoodDes.value, inputfoodType.value);
     // foodAddUser.style.display = "none";
+    addingFoodBoxshadow.style.display = "";
 }
-fooduserFinding.onclick = function () {
-    addNewFood(foodAddUser.value, inputfoodPrice.value, inputfoodDes.value, inputfoodType.value);
-    foodAddUser.style.display = "none"; foodAddUser.style.display = "none"; foodAddUser.style.display = "none";
+// fooduserFinding.onclick = function () {
+//     addNewFood(foodAddUser.value, inputfoodPrice.value, inputfoodDes.value, inputfoodType.value);
+//     foodAddUser.style.display = "none"; foodAddUser.style.display = "none"; foodAddUser.style.display = "none";
+// }
+delectdddFood.onclick = function () {
+    addingFoodBoxshadow.style.display = "none";
 }
+addFoodbtn.onclick = function () {
+    addNewFood(inputfoodName.value, inputfoodPrice.value, inputfoodDes.value, inputfoodType.value,);
+    inputfoodName.value = "";
+    inputfoodPrice.value = "";
+    inputfoodDes.value = "";
+    inputfoodType.value = "";
+    addingFoodBoxshadow.style.display = "none";
 
+}
 
 
 // 查找菜品
@@ -266,8 +303,9 @@ function lookFoodMetho(newfind) {
                         + "<th>" + resData[i].price + "</th>"
                         + "<th>" + resData[i].desc + "</th>"
                         + "<th>" + resData[i].typename + "</th>"
-                        + "<th>" + "<button id='delectFood' class='delectFoodAll'>删除</button>" + "</th>"
-                        + "<th>" + resData[i].typename + "</th>"
+                        + "<th>" + "<button class='delectFood'>删除</button> " +
+                        "<button class='changeFood'onclick='changefoodNew(this)'>修改</button>"
+                        + "</th>"
                         + "</tr>"
                 }
             }
@@ -292,7 +330,7 @@ lookFood.onclick = function () {
 // 重置之后给它恢复原样
 var reNewFood = document.getElementById("reNewFood");
 reNewFood.onclick = function () {
-    getData(foodPageNum.innerHTML, 5);
+    getData(foodPageNum.innerHTML, perPage);
     console.log("aaa")
 }
 
@@ -302,14 +340,23 @@ reNewFood.onclick = function () {
 // 订单
 var orderTable = document.getElementsByClassName("orderTable")[0];
 var orderHead = document.getElementById("orderHead");
+var orderpageChange = document.getElementById("orderpageChange");
+var orderIndex = orderpageChange.selectedIndex;
+var orderPage = orderpageChange.options[orderIndex].value;
+function changeOrderperpage() {
+    orderIndex = orderpageChange.selectedIndex;
+    orderPage = orderpageChange.options[orderIndex].value;
+    getOrderlen(orderPageNum.innerHTML, orderPage);
+
+}
 // 分页查询
-function getOrderlen(orderpage) {
+function getOrderlen(oldorderpage, orderPage) {
     $.ajax({
         type: "POST",
         url: "http://118.195.129.130:3000/order/getInfoByPage_order",
         data: {
-            page: orderpage,
-            per_page: 7
+            page: oldorderpage,
+            per_page: orderPage
         },
         success: function (result) {
             console.log(result, 'result4')
@@ -321,9 +368,9 @@ function getOrderlen(orderpage) {
                     + "<li class='orderconten'>" + result[j].us + "</li>"
                     + "<li class='orderconten'>" + result[j].amount + "</li>"
                     + "<li class='orderconten'>" + result[j].phone + "</li>"
-                    + "<li class='orderconten'>" + result[j].pay + "</li>"
+                    + "<li class='orderconten'>" + (result[j].pay == 0 ? '已支付' : '未支付') + "</li>"
                     + "<li class='orderconten orderOperator'>" + "<button id='delectfoodOrder' class='delectfoodOrder'>删除</button>"
-                    + "<div style='display:none'>"+JSON.stringify(result[j])+"</div>"
+                    + "<div style='display:none'>" + JSON.stringify(result[j]) + "</div>"
                     + "<button id='changefoodOrder' class='changefoodOrder' onclick='changefoodOrderNew(this)'>修改</button>" + "</li>"
                     + "</ul>"
 
@@ -353,7 +400,7 @@ function getOrderlen(orderpage) {
         }
     })
 }
-getOrderlen(1);
+getOrderlen(1, orderPage);
 
 // 订单的分页查询
 // 获取上一页下一页的按钮
@@ -370,19 +417,19 @@ orderChangebtnUp.onclick = function () {
         orderPageNum.innerHTML = 1;
     }
     else {
-        getOrderlen(orderPageNum.innerHTML)
+        getOrderlen(orderPageNum.innerHTML, orderPage);
     }
 
 }
 // 分页查询传参数问题
 orderChangebtnDown.onclick = function () {
     orderPageNum.innerHTML++;
-    if (orderPageNum.innerHTML > Math.ceil(orderperPage / 5)) {
+    if (orderPageNum.innerHTML > Math.ceil(orderPageNum.innerHTML / orderPage)) {
         alert("这是最后一页");
-        orderPageNum.innerHTML = Math.ceil(orderperPage / 5);
+        orderPageNum.innerHTML = Math.ceil(orderPageNum.innerHTML / orderPage);
     }
     else {
-        getOrderlen(orderPageNum.innerHTML)
+        getOrderlen(orderPageNum.innerHTML, orderPage);
     }
 
 }
@@ -403,7 +450,9 @@ function addNewFooaddfoodOrderd(searchOrderID, searchOrdermoney, searchOrderphon
         success: function (result) {
             console.log(result, 'result3')
             // 问题 添加成功之后需要调用get方法
-            getOrderlen(1);
+            getOrderlen(1, orderPage);
+            NeworderpageAll.innerHTML = allordreLength;
+
         },
         error: function (err) {
             console.log(err)
@@ -429,9 +478,15 @@ addFoaddfoodOrderod.onclick = function () {
 }
 addfoodOrderagin.onclick = function () {
     console.log(searchOrderID.value);
-    addNewFooaddfoodOrderd(searchOrderID.value, searchOrdermoney.value, searchOrderphone.value, searchOrdernowtime.value);
-    orderBoxShadow.style = "display:none";
-    findfoodOrderHidden.style = "display:none";
+    if (lookOrderID.value == "" || searchOrdermoney.value == "" || searchOrderphone.value == "" || searchOrdernowtime == "") {
+        alert("请输入数据");
+    }
+    else {
+        addNewFooaddfoodOrderd(searchOrderID.value, searchOrdermoney.value, searchOrderphone.value, searchOrdernowtime.value);
+        orderBoxShadow.style = "display:none";
+        findfoodOrderHidden.style = "display:none";
+
+    }
 
 }
 rightaddfoodOrderagin.onclick = function () {
@@ -442,6 +497,7 @@ rightaddfoodOrderagin.onclick = function () {
 
 // 获取页面总长度
 var allordreLength;
+var NeworderpageAll = document.getElementById("NeworderpageAll");
 function getOrderallLength() {
     $.ajax({
         type: "GET",
@@ -450,7 +506,9 @@ function getOrderallLength() {
         },
         success: function (result) {
             console.log(result, 'result5')
-            orderperPage = result.pages
+            allordreLength = result.pages;
+            NeworderpageAll.innerHTML = allordreLength;
+
 
 
         },
@@ -495,9 +553,12 @@ function findingOrderAll(ordernewfind) {
                         + "<li class='orderconten'>" + rewOrder[k].amount + "</li>"
                         + "<li class='orderconten'>" + rewOrder[k].phone + "</li>"
                         + "<li class='orderconten'>" + rewOrder[k].pay + "</li>"
-                        + "<li class='orderconten'>" + "<button>删除</button>" + "</li>"
+                        + "<li class='orderconten orderOperator'>" + "<button id='delectfoodOrder' class='delectfoodOrder'>删除</button>"
+                        + "<button id='changefoodOrder' class='changefoodOrder' onclick='changefoodOrderNew(this)'>修改</button>"
+                        + "</li>"
                         + "</ul>"
                 }
+                NeworderpageAll.innerHTML = allordreLength;
             }
         },
         error: function (err) {
@@ -511,10 +572,10 @@ findfoodOrder.onclick = function () {
 }
 // 重置搜索
 renewfoodOrder.onclick = function () {
-    getOrderlen(orderPageNum.innerHTML);
+    getOrderlen(orderPageNum.innerHTML, orderPage);
 }
 var delectfindfoodOrder = function () {
-    getOrderlen(orderPageNum.innerHTML);
+    getOrderlen(orderPageNum.innerHTML, orderPage);
 }
 
 // 修改方法
@@ -523,22 +584,23 @@ var changeorderBoxShadow = document.getElementById("changeorderBoxShadow");
 var changefoodOrderHidden = document.getElementById("changefoodOrderHidden");
 var changefoodOrderagin = document.getElementById("changefoodOrderagin");
 var rightchangefoodOrderagin = document.getElementById("rightchangefoodOrderagin");
-function changefoodOrderNew(){
-            console.log('11111');
-            changeorderBoxShadow.style.display = 'block';
-            changefoodOrderHidden.style.display = '';
-            console.log(5555);
+function changefoodOrderNew() {
+    console.log('11111');
+    changeorderBoxShadow.style.display = 'block';
+    changefoodOrderHidden.style.display = '';
+    console.log(5555);
 }
-changefoodOrderagin.onclick=function(){
+changefoodOrderagin.onclick = function () {
 
     changeorderBoxShadow.style.display = 'none';
     changefoodOrderHidden.style.display = 'none';
     console.log(document.getElementById("changeOrderID").value);
+
     // for (var z = 0; z < rewOrder.length; z++) {
     //     changeOrderAll(changeOrderID.value=rewOrder[z].us, changeOrdermoney.value=rewOrder[z].amount, changeOrderphone.value=rewOrder[z].phone, changeOrdernowtime.value=rewOrder[z].pay);
     // }
 }
-rightchangefoodOrderagin.onclick=function(){
+rightchangefoodOrderagin.onclick = function () {
 
     changeorderBoxShadow.style.display = 'none';
     changefoodOrderHidden.style.display = 'none';
@@ -562,8 +624,8 @@ function changeOrderAll(orderus, orderamount, changeOrderphone, changeorderpay) 
         success: function (result) {
             console.log("---------");
             console.log(result);
-            console.log("---------");
-            getOrderlen()
+            console.log("---------6666");
+            getOrderlen(orderPageNum.innerHTML, orderPage);
         },
         error: function (err) {
             console.log(err)
@@ -571,19 +633,19 @@ function changeOrderAll(orderus, orderamount, changeOrderphone, changeorderpay) 
     })
 }
 // 修改的问题
-var foodBoxShadow=document.getElementById("foodBoxShadow");
-var findfoodHidden=document.getElementById("findfoodHidden");
-var changeorderBoxShadow=document.getElementById("changeorderBoxShadow");
-var changefoodOrderHidden=document.getElementById("changefoodOrderHidden");
-function changefoodOrderNew(obj){
-    changeorderBoxShadow.style.display="";
-    changefoodOrderHidden.style.display="";
+var foodBoxShadow = document.getElementById("foodBoxShadow");
+var findfoodHidden = document.getElementById("findfoodHidden");
+var changeorderBoxShadow = document.getElementById("changeorderBoxShadow");
+var changefoodOrderHidden = document.getElementById("changefoodOrderHidden");
+function changefoodOrderNew(obj) {
+    changeorderBoxShadow.style.display = "";
+    changefoodOrderHidden.style.display = "";
     console.log(obj.parentElement.parentElement.children[1]);
-    changeOrderAll(changeOrderID.value=obj.parentElement.parentElement.children[0].innerHTML,
-        changeOrdermoney=obj.parentElement.parentElement.children[1].innerHTML,
-        changeOrderphone.value=obj.parentElement.parentElement.children[2].innerHTML,
-        changeOrdernowtime.value=obj.parentElement.parentElement.children[3].innerHTML)
-        
+    changeOrderAll(changeOrderID.value = obj.parentElement.parentElement.children[0].innerHTML,
+        changeOrdermoney.value = obj.parentElement.parentElement.children[1].innerHTML,
+        changeOrderphone.value = obj.parentElement.parentElement.children[2].innerHTML,
+        changeOrdernowtime.value = obj.parentElement.parentElement.children[3].innerHTML);
+
 }
 // 删除
 // 删除的接口
@@ -596,7 +658,7 @@ function delectOrder(orderid) {
         },
         success: function (result) {
             console.log(result, 'result7')
-            getOrderlen(orderPageNum.innerHTML);
+            getOrderlen(orderPageNum.innerHTML, orderPage);
 
         },
         //error是请求失败之后执行的函数
@@ -605,16 +667,26 @@ function delectOrder(orderid) {
         }
     })
 }
-
-// 用户部分的内容 分页查询的接口
+var userpageChange = document.getElementById("userpageChange");
+var userIndex = userpageChange.selectedIndex;
+var ueserPage = userpageChange.options[userIndex].value;
+// 用户部分的内容 分页查询的接口userIndex
 var userbodyTable = document.getElementById("userbodyTable");
-function getUsermessage(userpage) {
+var userPageNum = document.getElementById("userPageNum");
+function changeUser() {
+    userIndex = userpageChange.selectedIndex;
+    ueserPage = userpageChange.options[userIndex].value;
+    getUsermessage(userPageNum.innerHTML, ueserPage)
+
+
+}
+function getUsermessage(userpage, userslectpage) {
     $.ajax({
         type: "POST",
         url: "http://118.195.129.130:3000/users/getInfoByPage_users",
         data: {
             page: userpage,
-            per_page: 7
+            per_page: userslectpage
         },
         success: function (result) {
             console.log(result, 'result8')
@@ -622,15 +694,15 @@ function getUsermessage(userpage) {
             userbodyTable.innerHTML = "";
             for (var z = 0; z < result.length; z++) {
                 userbodyTable.innerHTML += "<ul class='userTableAll'>"
-                    + "<li class='userconten'>" + result[z].us + "</li>"
+                    + "<li class='userconten'>" + result[z].us.replace(/</g, '&lt;').replace(/>/g, '&gt;')
+                    + "</li>"
                     + "<li class='userconten'>" + result[z].age + "</li>"
-                    + "<li class='userconten'>" + result[z].sex + "</li>"
+                    + "<li class='userconten'>" + (result[z].sex === 0 ? "男" : "女") + "</li>"
                     + "<li class='userconten'>" + result[z].integral + "</li>"
-                    + "<li class='userconten'>" + "<button id='delectuserOrder' class='delectuserOrder'>删除</button>"
-                    + "<button id='changeuserOrder' class='changeuserOrder'>修改</button>" + "</li>"
+                    + "<li class='userconten'>" + "<button id='delectuserOrder' class='delectuserOrder' onclick='btnDelectUsermessage(this)'>删除</button>"
+                    + "<div style='display:none'>" + JSON.stringify(result[z]) + "</div>"
+                    + "<button id='changeuserOrder' class='changeuserOrder' onclick='changeUserAllthings(this)'>修改</button>" + "</li>"
                     + "</ul>"
-
-
             }
 
         },
@@ -640,7 +712,7 @@ function getUsermessage(userpage) {
         }
     })
 }
-getUsermessage(1);
+getUsermessage(1, ueserPage);
 var adduserOrder = document.getElementById("adduserOrder");
 var userBoxShadow = document.getElementById("userBoxShadow");
 var userOrderHidden = document.getElementById("userOrderHidden");
@@ -649,29 +721,37 @@ var userOrderHidden = document.getElementById("userOrderHidden");
 var adduserOrderagin = document.getElementById("adduserOrderagin");
 var rightadduserOrderagin = document.getElementById("rightadduserOrderagin");
 
+// 获取页面的总长度
+var userLen;
+var userpageAll = document.getElementById("userpageAll");
+// userpageAll.innerHTML=
+function getUserAlllength() {
+    $.ajax({
+        type: "GET",
+        url: "http://118.195.129.130:3000/users/allpage_users",
+        data: {
+        },
+        success: function (result) {
+            console.log(result, 'result80')
+            userLen = result.pages;
+            userpageAll.innerHTML = userLen;
+            // userLen是条数的总数量
+            getUsermessage(userPageNum.innerHTML, ueserPage);
 
-
-adduserOrder.onclick = function () {
-    userBoxShadow.style.display = "";
-    userOrderHidden.style.display = "";
+        },
+        error: function (err) {
+            console.log(err)
+        }
+    })
 
 }
-adduserOrderagin.onclick = function () {
-    userBoxShadow.style.display = "none";
-    userOrderHidden.style.display = "none";
-    addNewUser(addUserID.value, addYears.value, addGender.value, addIntegral.value);
-
-}
-rightadduserOrderagin.onclick = function () {
-    userBoxShadow.style.display = "none";
-    userOrderHidden.style.display = "none";
-
-}
-// 获取输入框
+getUserAlllength();
+// 添加输入框
 var addUserID = document.getElementById("addUserID");
 var addYears = document.getElementById("addYears");
 var addGender = document.getElementById("addGender");
 var addIntegral = document.getElementById("addIntegral");
+
 // 添加用户的方法接口
 function addNewUser(usernewName, usernewprice, usernewdesc, usertypename,) {
     $.ajax({
@@ -694,6 +774,49 @@ function addNewUser(usernewName, usernewprice, usernewdesc, usertypename,) {
     })
 
 }
+var userName = window.localStorage.getItem("us");
+var userlocalID = window.localStorage.getItem("_id");
+adduserOrder.onclick = function () {
+    userBoxShadow.style.display = "";
+    userOrderHidden.style.display = "";
+    addUserID.value = userName;
+    $.ajax({
+        type: "POST",
+        url: "http://118.195.129.130:3000/user/inquire",
+        data: {
+            _id: userlocalID
+        },
+        success: function (result) {
+            console.log(result.data[0], 'result9');
+            addUserID.value = result.data[0].us;
+            addYears.value = result.data[0].age;
+
+            addGender.value = result.data[0].sex ? "女" : "男";
+            addIntegral.value = result.data[0].__v;
+
+
+        },
+        error: function (err) {
+            console.log(err)
+        }
+    })
+
+
+
+
+}
+adduserOrderagin.onclick = function () {
+    userBoxShadow.style.display = "none";
+    userOrderHidden.style.display = "none";
+    addNewUser(addUserID.value, addYears.value, addGender.value, addIntegral.value);
+
+}
+rightadduserOrderagin.onclick = function () {
+    userBoxShadow.style.display = "none";
+    userOrderHidden.style.display = "none";
+
+
+}
 
 // 页面切换
 var userChangebtnUp = document.getElementById("userChangebtnUp");
@@ -706,23 +829,165 @@ userChangebtnUp.onclick = function () {
         userPageNum.innerHTML = 1;
     }
     else {
-        getUsermessage(userPageNum);
+        getUsermessage(userPageNum.innerHTML);
     }
 
 }
-// userChangebtnDown.onclick=function(){
-//     userPageNum.innerHTML++;
-//     if(userPageNum.innerHTML=0){
-//         alert("这是第一页");
-//         userPageNum.innerHTML=1;
-//     }
-//     else{
-//         getUsermessage(userPageNum);
-//     }
+userChangebtnDown.onclick = function () {
+    userPageNum.innerHTML++;
+    if (userPageNum.innerHTML > Math.ceil(userLen / ueserPage)) {
+        alert("这是最后一页");
+        userPageNum.innerHTML = Math.ceil(userLen / ueserPage);
+    }
+    else {
+        getUsermessage(userPageNum.innerHTML, ueserPage);
+    }
+}
+getUsermessage(1, ueserPage);
+// 搜索用户的接口
+function findingUserMessage(ueserkw) {
+    $.ajax({
+        type: "POST",
+        url: "http://118.195.129.130:3000/users/getInfoByKw_users",
+        data: {
+            kw: ueserkw,
+        },
+        success: function (result) {
+            console.log(result, 'result10')
+            if (result.data.length == 0) {
+                alert("没有查找到原始数据");
+            }
+            else {
+                userbodyTable.innerHTML = "";
+                let newfindUser = result.data;
+                for (let k = 0; k < newfindUser.length; k++) {
+                    userbodyTable.innerHTML += "<ul class='userTableAll'>"
+                        + "<li class='userconten'>" + newfindUser[k].us + "</li>"
+                        + "<li class='userconten'>" + newfindUser[k].age + "</li>"
+                        + "<li class='userconten'>" + (newfindUser[k].sex === 0 ? "男" : "女") + "</li>"
+                        + "<li class='userconten'>" + newfindUser[k].integral + "</li>"
+                        + "<li class='userconten'>" + "<button id='delectuserOrder' class='delectuserOrder'>删除</button>"
+                        + "<button id='changeuserOrder' class='changeuserOrder'>修改</button>" + "</li>"
+                        + "</ul>"
+                }
+            }
 
-// }
+        },
+        error: function (err) {
+            console.log(err)
+        }
+    })
 
-// 获取页面总条数
+}
+var findingUserID = document.getElementById("findingUserID");
+var finduserOrder = document.getElementById("finduserOrder");
+finduserOrder.onclick = function () {
+    if (findingUserID.value == "") {
+        alert("请输入要搜索的内容");
+    }
+    else {
+        findingUserMessage(findingUserID.value);
+    }
+}
+// 重置和取消搜索
+var renewuserOrder = document.getElementById("renewuserOrder");
+var delectuserOrderbtn = document.getElementById("delectuserOrderbtn");
+delectuserOrderbtn.onclick = function () {
+    findingUserID.value == "";
+    getUsermessage(userPageNum.innerHTML, ueserPage);
+}
+renewuserOrder.onclick = function () {
+    findingUserID.value == "";
+    getUsermessage(userPageNum.innerHTML, ueserPage);
+}
+// 删除接口
+function delectNewUser(userid) {
+    console.log(userid);
+    $.ajax({
+        type: "POST",
+        url: "http://118.195.129.130:3000/users/del_users",
+        data: {
+            _id: userid
+        },
+        success: function (result) {
+            console.log(result, 'result9')
+            getUsermessage(userPageNum.innerHTML, ueserPage);
+        },
+        error: function (err) {
+            console.log(err)
+        }
+    })
 
+}
 
+function btnDelectUsermessage(th) {
+    console.log(th);
+    var delectUsermessage = JSON.parse(th.nextElementSibling.innerHTML);
+    console.log(JSON.parse(th.nextElementSibling.innerHTML));
+    if (confirm("确定要删除此用户？")) {
+        delectNewUser(delectUsermessage._id);
+    }
+}
+// 修改用户信息
+
+function changeNewUser(userID, userUS, userAge, userSex) {
+    $.ajax({
+        type: "POST",
+        url: "http://118.195.129.130:3000/users/update_users",
+        data: {
+            _id: userID,
+            us: userUS,
+            age: userAge,
+            sex: userSex
+
+        },
+        success: function (result) {
+            console.log(result, 'result9')
+            getUsermessage(userPageNum.innerHTML, ueserPage);
+        },
+        error: function (err) {
+            console.log(err)
+        }
+    })
+
+}
+var userChangeBoxShadow = document.getElementById("userChangeBoxShadow");
+var userChangeHidden = document.getElementById("userChangeHidden");
+var changeuserOrderagin = document.getElementById("changeuserOrderagin");
+// 获取修改输入框里面的内容
+var changeuserIDinput = document.getElementById("changeuserIDinput");
+var changeuserAgeinput = document.getElementById("changeuserAgeinput");
+var changeuserGenderinput = document.getElementById("changeuserGenderinput");
+var changeuserAllsoresinput = document.getElementById("changeuserAllsoresinput");
+
+// 获取修改的元素
+// 绑定的修改的方法
+function changeUserAllthings(userall) {
+    userChangeBoxShadow.style.display = "";
+    userChangeHidden.style.display = "";
+    // console.log(changeuserIDinput,'changeuserIDinput');
+    // console.log(userall.parentElement.parentElement.children[0].innerHTML);
+    changeuserIDinput.value = userall.parentElement.parentElement.children[0].innerHTML;
+    changeuserAgeinput.value = userall.parentElement.parentElement.children[1].innerHTML;
+    changeuserGenderinput.value = userall.parentElement.parentElement.children[2].innerHTML;
+    changeuserAllsoresinput.value = userall.parentElement.parentElement.children[3].innerHTML;
+
+}
+// 将内容赋给
+changeuserOrderagin.onclick = function () {
+    changeNewUser(changeuserIDinput.value, changeuserAgeinput.value, changeuserGenderinput.value, changeuserAllsoresinput.value);
+}
+var rightchangeuserOrderagin = document.getElementById("rightchangeuserOrderagin");
+rightchangeuserOrderagin.onclick = function () {
+    userChangeBoxShadow.style.display = "none";
+    userChangeHidden.style.display = "none";
+    getUsermessage(userPageNum.innerHTML, ueserPage);
+
+}
+var returnBack = document.getElementById("returnBack");
+returnBack.onclick = function () {
+    if (confirm("确定要删除此用户信息？")) {
+        window.localStorage.clear();
+    }
+}
 

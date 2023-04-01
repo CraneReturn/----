@@ -11,7 +11,8 @@ input {
 button {
   border: none;
   cursor: pointer;
-  padding: 5px;
+  padding: 7px;
+  color: white;
 }
 
 .bacPhotos {
@@ -21,8 +22,12 @@ button {
   background-image: url("../img/bacPhoto.jpg");
 }
 
+.button {
+  opacity: 1;
+}
+
 .logingCenter {
-  width: 700px;
+  width: 900px;
   margin: auto;
   top: 0;
   left: 0;
@@ -42,20 +47,20 @@ button {
   bottom: 0;
   border-radius: 5px;
   border: 1px solid;
-  display: flex;
   background-color: beige;
+  opacity: 0.9;
 }
 
 #nameloginChoice {
-  width: 200px;
-  height: 60px;
+  width: 100%;
+  height: 100px;
   margin-top: 20px;
   justify-content: center;
   margin-left: 5px;
 }
 
 #passloginChoice {
-  width: 200px;
+  width: 100%;
   height: 100px;
   margin-top: 20px;
   justify-content: center;
@@ -67,13 +72,44 @@ button {
   height: 6px;
   background-color: beige;
   padding-top: 40px;
-  margin-left: 30px;
+  margin-bottom: 20px;
 }
 
-#button {
-  margin-left: 30px;
+.title > p {
+  text-align: center;
+  color: darkseagreen;
 }
 
 .loginbtn {
-  margin-left: 36px;
+  margin-left: 103px;
+  background-color: darkseagreen;
+  border-radius: 10px;
+}
+
+.loanbtn {
+  margin-left: 10px;
+  background-color: bisque;
+  border-radius: 10px;
+}
+
+#userName {
+  margin-left: 6px;
+}
+
+#userKey {
+  margin-left: 20px;
+}
+
+#nameloginChoice {
+  margin-top: 60px;
+}
+
+#passloginChoice {
+  margin-bottom: 2px;
+  margin-top: -12px;
+}
+
+#nameloginChoice > label,
+#passloginChoice > label {
+  margin-left: 20px;
 }

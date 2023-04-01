@@ -17,10 +17,13 @@ loginbtn.onclick = function () {
             }
            else{
             if (result.err == 0) {
-                window.location.href = "control.html";
+                // window.location.href = "control.html";
                 // 将数据存到本地库
-                window.localStorage.setItem("us",userName);
-                window.localStorage.setItem("ps",userKey);
+                console.log("us",userName.value,result.data[0]._id);
+                window.localStorage.setItem("us",userName.value);
+                window.localStorage.setItem("ps",userKey.value);
+                window.localStorage.setItem("_id",result.data[0]._id);
+
             } else {
                 alert("密码或用户名错误");
             }
@@ -35,4 +38,9 @@ loginbtn.onclick = function () {
             alert("密码或用户名错误");
         }
     })
+}
+var loanbtn=document.getElementById("loanbtn");
+loanbtn.onclick=function(){
+    console.log(111111);
+ window.location.href="loan.html";
 }
